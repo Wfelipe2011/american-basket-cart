@@ -1,0 +1,25 @@
+service: template
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+	
+custom:
+  serverlessPluginTypescript:
+    tsConfigFileLocation: './tsconfig.build.json'
+ 
+
+functions:
+  hello:
+    handler: ./src/index.hello
+    events:
+      - http:
+          path: hello
+          method: get
